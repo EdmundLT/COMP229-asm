@@ -1,3 +1,5 @@
+// COMP229 Assignment 1 - LONG TANG - SID: 301225866
+
 const express = require("express");
 const app = express();
 const PORT = 8000;
