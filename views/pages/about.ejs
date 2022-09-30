@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+
+    <main>
+      <!-- About Me -->
+      <div id="about" class="d-flex align-items-center">
+        <div>
+          <img
+            src="/images/me.jpg"
+            alt="profilepicture"
+            width="375"
+            height="375"
+          />
+        </div>
+        <div class="flex-grow-1 ms-3">
+          <p class="fs-3">About me</p>
+          <p class="fs-5">
+            My name is Long Tang. I am a student of Centennial College in
+            Toronto, CA with a Diploma of Software Engineering. I'm passionate
+            to learn everything related to tech and on my way to become a
+            backEnd software engineer. Besides software engineering, I am also
+            interested in photography, graphic design and filmmaking. I have a
+            youtube channel sharing my immigrant from Hong Kong to Canada and my
+            life stories.
+          </p>
+          <a class="btn btn-primary"
+            href="https://docs.google.com/document/d/1KTXo5gSGd3eptt0KtiYrA9LrTXNWjHMLw3Mi1K1bAv4/edit?usp=sharing"
+            >Resume</a
+          >
+        </div>
+      </div>
+      <hr />
+      <!-- Education -->
+      <div class="container text-center" id="education">
+        <p class="fs-3">Education</p>
+        <div>
+          <img src="/images/cc.png" alt="CClogo" class="mx-auto" />
+          <p class="fs-3 p-2">
+            Centennial College - <span class="text-sm">Toronto CA</span>
+          </p>
+        </div>
+        <p class="fs-5">Diploma of Software Engineering</p>
+
+        <p class="fs-5">Jan 2022 - Present (Grad in Apr 2023)</p>
+      </div>
+    </main>
+
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
