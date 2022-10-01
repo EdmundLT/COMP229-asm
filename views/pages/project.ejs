@@ -3,46 +3,126 @@
   <head>
     <%- include('../partials/head'); %>
   </head>
-  <body class="container">
+  <body class="container mx-auto">
     <header><%- include('../partials/header'); %></header>
-
-    <main>
+    <div class='container mx-auto p-12 rounded-lg text-center' id='projects'>
+    
+      <p class="p-4 text-4xl text-bold">Projects</p>
       <!-- FFD -->
-      <div class="container mx-auto text-center">
-        <p class="p-4 fs-1">Project</p>
-
-        <img src="/images/ffd.png" height="480" alt="ffd img" />
-        <div>
-          <p class="fs-3">Fake Financial Data API</p>
-          <p class="fs-5">
-            Free API builds for testing and data analysis practice. Stacks:
-            React, Express, PostgreSQL, API, Jest (Unit Test). Project and
-            Server deploy on AWS EC2 and RDS.
+      <div class="container mx-auto p-8 pb-10 text-black md:flex rounded-lg">
+          <img
+            class="shadow-lg mx-auto rounded-lg"
+            src="/images/ffd.png"
+            alt="ffd-image"
+            width="550"
+          />
+          <div class="m-10 text-center text-black md:w-1/2">
+            <p class="text-3xl pb-4 font-Poppins">Fake Financial Data</p>
+            <p class="lead text-lg font-Poppins leading-7">
+              Free API builds for testing and data analysis practice. Stacks: React, Express, PostgreSQL, API, Jest (Unit Test). Project and Server deploy on AWS EC2 and RDS.
           </p>
+          <p class="lead text-lg font-Poppins leading-7">
+            This is my first full stack web application. The reason why I made it is because originally I want to make a stock monitoring APP,
+            But I found out stock index API are really expensive and I need some mock financial Data to test my app.
+          </p>
+          <div class="flex">
+            <!-- Github Repo Button -->
+            <div class="text-center w-full mt-4 p-4">
+              <a
+              href="https://github.com/EdmundLT/fake-financial-data-io"
+              class="text-black hover:bg-green-500 border-solid border-2 border-black font-Poppins py-2 px-4 rounded"
+              >
+              Github Repo
+            </a>
+          </div>
+          <!-- Live Demo Button -->
+          <div class="text-center w-full mt-4 p-4">
+            <a
+            href="http://ffd-api.click/"
+            class="text-black hover:bg-green-500 border-solid border-2 border-black font-Poppins py-2 px-4 rounded"
+            >
+            Live Demo
+          </a>
         </div>
-
-        <a href="https://github.com/EdmundLT/fake-financial-data-io" class="btn btn-primary">Repo</a>
-        <a href="http://ffd-api.click/" class="btn btn-primary">Live Demo</a>
+          </div>
       </div>
-      <hr />
-      <!-- My Portfolio -->
-      <div class="container mx-auto text-center">
-        <img src="/images/portfolio.png" height="480" alt="ffd img" />
-        <div>
-          <p class="fs-3">My portfolio</p>
-          <p class="fs-5">
-            This is my personal website built in React, Tailwind CSS, Material
-            UI
-          </p>
-        </div>
+    </div>
 
-        <a href="https://github.com/EdmundLT/EdmundLT.github.io/tree/master" class="btn btn-primary"
-          >Repo</a
+    <!-- Stocker.io -->
+    <div class="container mx-auto p-8 pb-10 text-black md:flex rounded-lg">
+      <div class="m-10 text-center text-black md:w-1/2">
+        <p class="text-3xl pb-4 font-Poppins">Stocker.io</p>
+        <p class="lead text-lg font-Poppins leading-7">
+          Fullstack Stock watching web application project with Next.JS, APIs, SSR, Firebase, Tailwind CSS, Google Authentication
+      </p>
+      <p class="lead text-lg font-Poppins leading-7">
+        As I said above, after I finished my Fake Financial Data API, I can use the API on this project.
+      </p>
+      <div class="flex">
+        <!-- Github Repo Button -->
+        <div class="text-center w-full mt-4 p-4">
+          <a
+          href="https://github.com/EdmundLT/next-stocker"
+          class="text-black hover:bg-green-500 border-solid border-2 border-black font-Poppins py-2 px-4 rounded"
+          >
+          Github Repo
+        </a>
+      </div>
+      <!-- Live Demo Button -->
+      <div class="text-center w-full mt-4 p-4">
+        <a
+        href="https://stocker-io.vercel.app/"
+        class="text-black hover:bg-green-500 border-solid border-2 border-black font-Poppins py-2 px-4 rounded"
         >
-        <a href="https://edmundlt.tech" class="btn btn-primary">Live Demo</a>
+        Live Demo
+      </a>
+    </div>
       </div>
-    </main>
-
+      
+  </div>
+  <img
+  class="shadow-lg mx-auto"
+  src="/images/Stockio.png"
+  alt="ffd-image"
+  width="550"
+/>
+</div>
+<!-- Project 3 -->
+<div class="container mx-auto p-8 pb-10 text-black md:flex rounded-lg">
+  <img
+    class="shadow-lg mx-auto"
+    src="/images/portfolio.png"
+    alt="ffd-image"
+    width="550"
+  />
+  <div class="m-10 text-center text-black md:w-1/2">
+    <p class="text-3xl pb-4 font-Poppins">My portfolio</p>
+    <p class="lead text-lg font-Poppins leading-7">
+      This is my personal website built in React, Tailwind CSS, Material UI.
+  </p>
+  <div class="flex">
+    <!-- Github Repo Button -->
+    <div class="text-center w-full mt-4 p-4">
+      <a
+      href="https://github.com/EdmundLT/EdmundLT.github.io/tree/master"
+      class="text-black hover:bg-green-500 border-solid border-2 border-black font-Poppins py-2 px-4 rounded"
+      >
+      Github Repo
+    </a>
+  </div>
+  <!-- Live Demo Button -->
+  <div class="text-center w-full mt-4 p-4">
+    <a
+    href="https://edmundlt.tech"
+    class="text-black hover:bg-green-500 border-solid border-2 border-black font-Poppins py-2 px-4 rounded"
+    >
+    Live Demo
+  </a>
+</div>
+  </div>
+</div>
+</div>
+      </div>
     <footer><%- include('../partials/footer'); %></footer>
   </body>
 </html>

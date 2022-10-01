@@ -3,53 +3,62 @@
   <head>
     <%- include('../partials/head'); %>
   </head>
-  <body class="container">
+
+  <body class="container mx-auto">
+    <!-- About Me -->
     <header><%- include('../partials/header'); %></header>
-
-    <main>
-      <!-- About Me -->
-      <div id="about" class="d-flex align-items-center">
-        <div>
-          <img
-            src="/images/me.jpg"
-            alt="profilepicture"
-            width="375"
-            height="375"
-          />
-        </div>
-        <div class="flex-grow-1 ms-3">
-          <p class="fs-3">About me</p>
-          <p class="fs-5">
-            My name is Long Tang. I am a student of Centennial College in
-            Toronto, CA with a Diploma of Software Engineering. I'm passionate
-            to learn everything related to tech and on my way to become a
-            backEnd software engineer. Besides software engineering, I am also
-            interested in photography, graphic design and filmmaking. I have a
-            youtube channel sharing my immigrant from Hong Kong to Canada and my
-            life stories.
-          </p>
-          <a class="btn btn-primary"
-            href="https://docs.google.com/document/d/1KTXo5gSGd3eptt0KtiYrA9LrTXNWjHMLw3Mi1K1bAv4/edit?usp=sharing"
-            >Resume</a
+    <div class="container mx-auto p-8 pb-10 text-black md:flex rounded-lg">
+      <!-- Profile Picture -->
+        <img
+          class="rounded-full shadow-lg mx-auto"
+          src="/images/me.jpg"
+          alt="profilepicture"
+          width="375"
+          height="375"
+        />
+      <!-- Introduction -->
+        <div class="m-10 text-center text-black md:w-1/2">
+          <p class="text-3xl pb-4 font-Poppins">About me</p>
+          <p class="lead text-lg font-Poppins leading-7">
+          My name is Long Tang. I am a student of Centennial College in Toronto,
+          CA with a Diploma of Software Engineering. I'm passionate to learn
+          everything related to tech and on my way to become a backEnd software
+          engineer. Besides software engineering, I am also interested in
+          photography, graphic design and filmmaking. I have a youtube channel
+          sharing my immigrant from Hong Kong to Canada and my life stories.
+        </p>
+        <!-- Resume Button -->
+        <div class="text-center w-full mt-4 p-4">
+          <a
+          href="resume.pdf"
+          class="text-black hover:bg-green-500 border-solid border-2 border-black font-Poppins py-2 px-4 rounded"
           >
-        </div>
+          Resume
+        </a>
       </div>
-      <hr />
-      <!-- Education -->
-      <div class="container text-center" id="education">
-        <p class="fs-3">Education</p>
-        <div>
-          <img src="/images/cc.png" alt="CClogo" class="mx-auto" />
-          <p class="fs-3 p-2">
-            Centennial College - <span class="text-sm">Toronto CA</span>
-          </p>
-        </div>
-        <p class="fs-5">Diploma of Software Engineering</p>
+    </div>
+  </div>
 
-        <p class="fs-5">Jan 2022 - Present (Grad in Apr 2023)</p>
-      </div>
-    </main>
+    <!-- Education -->
+  <div
+      class="container mx-auto p-8 pb-10 justify-center text-center 
+      align-font-Poppins text-black rounded-lg"
+      id="education"
+    >
+      <p class="text-3xl p-8">Education</p>
 
+      <img src="images/cc.png" alt="CClogo" class="mx-auto pb-4 rounded-full shadow-sm"/>
+        <p class="text-2xl p-2">
+          Centennial College - <span class="text-sm">Toronto, CA</span>
+        </p>
+        <p class="text-1xl p-2 text-inherit font-medium">
+          Diploma of Software Engineering
+        </p>
+        <p class="text-lg p-2">
+          Jan 2022 - Apr 2023
+        </p>
+    </div>
+    
     <footer><%- include('../partials/footer'); %></footer>
   </body>
 </html>
