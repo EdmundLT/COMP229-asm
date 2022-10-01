@@ -1,23 +1,28 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-solid fa-code">&nbsp;Edmund Tang</i></a>
-
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/">Home</a>
+<nav
+  class="sticky top-0 z-50 bg-white border-gray-200 rounded-md px-2 sm:px-4 py-2.5 backdrop-filter backdrop-blur-lg bg-opacity-30"
+>
+  <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <a href="/"><i class="fa-solid fa-code text-2xl"></i></a>
+    <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+      <ul
+        class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium text-black"
+      >
+      <li>
+        <a href="/" class="hover:text-green-800"> Home </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About Me</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/project">Project</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/services">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contact">Contact Me</a>
-      </li>
-    </ul>
+        <li>
+          <a href="/about" class="hover:text-green-800"> About </a>
+        </li>
+        <li>
+          <a href="/project" class="hover:text-green-800"> Projects </a>
+        </li>
+        <li>
+          <a href="/services" class="hover:text-green-800"> Services </a>
+        </li>
+        <li>
+          <a href="/contact" class="hover:text-green-800"> Contact </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
