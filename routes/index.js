@@ -19,8 +19,8 @@ router.get("/", function (req, res, next) {
     var email=req.body.email;
     var message=req.body.message;
     var form={email, message};
-    console.log(form);
-    res.redirect("/")
+    console.log(form)
+    res.send("Successfully submit your message.")
   })
   //project
   router.get("/project", function (req, res, next) {

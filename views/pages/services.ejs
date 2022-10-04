@@ -6,6 +6,23 @@
   <body class="container mx-auto text-center">
     <header><%- include('../partials/header'); %></header>
       <p class="text-4xl text-bold py-4">Services</p>
+      <!-- Services Card -->
+      <div class="grid grid-cols-3 gap-4 py-4">
+        <!-- Web Design -->
+        <div class="m-2 border border-black border-solid shadow-md bg-white rounded-lg">
+          <img src="images/web-design.jpeg" class="h-30">
+          <p class="text-3xl p-2">Web Design</p>
+        </div>
+        <div class="m-2 border border-black border-solid shadow-md bg-white rounded-lg">
+          <img src="images/graphic-design.jpeg">
+          <p class="text-3xl p-2">Graphic Design</p>
+        </div>
+        <div class="m-2 border border-black border-solid shadow-md bg-white rounded-lg">
+          <img src="images/app-dev.png">
+          <p class="text-3xl p-2">Application Development</p>
+        </div>
+
+      </div>
     <footer><%- include('../partials/footer'); %></footer>
   </body>
 </html>
