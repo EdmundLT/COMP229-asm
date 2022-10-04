@@ -7,7 +7,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const router = require("./routes/index");
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
