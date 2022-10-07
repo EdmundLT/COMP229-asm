@@ -1,3 +1,7 @@
+/* Created On 1 October 2022
+COMP229 Assignment 1
+Student Name: LONG TANG
+SID: 301225866 */
 const express = require("express")
 const router = express.Router()
 const bodyParser = require('body-parser');
