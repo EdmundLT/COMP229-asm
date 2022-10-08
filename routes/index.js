@@ -2,39 +2,55 @@
 COMP229 Assignment 1
 Student Name: LONG TANG
 SID: 301225866 */
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
-router.get("/", function (req, res, next) {
-  res.render("pages/index");
-});
+
+//Index Controller
+const {
+  home,
+  about,
+  contact,
+  contactForm,
+  projects,
+  services,
+} = require("../controllers/index.controller");
+//Login Controller
+const { login, loginAuth } = require("../controllers/login.controller");
+const {
+  register,
+  httpPostRegister,
+} = require("../controllers/register.controller");
+const {
+  httpGetBusinessCotnact,
+  httpPostBusinessContact,
+} = require("../controllers/bcontact.controller");
+
 router.use(bodyParser.urlencoded({ extended: false }));
+// Index Page
+router.get("/", home);
 // about page
-router.get("/about", function (req, res, next) {
-  res.render("pages/about", { title: "About Me" });
-});
-
+router.get("/about", about);
 //contact
-router.get("/contact", function (req, res, next) {
-  res.render("pages/contact");
-});
+router.get("/contact", contact);
 //Form Submmision
-router.post("/form", function (req, res, next) {
-  var name = req.body.name;
-  var email = req.body.email;
-  var message = req.body.message;
-  var form = { name, email, message };
-  console.log(form);
-  res.redirect("/")
-});
+router.post("/form", contactForm);
 //project
-router.get("/project", function (req, res, next) {
-  res.render("pages/project");
-});
-
+router.get("/project", projects);
 //services
-router.get("/services", function (req, res, next) {
-  res.render("pages/services");
-});
+router.get("/services", services);
 
+//Login
+router.get("/login", login);
+//Authenticate Login Information
+router.post("/auth", loginAuth);
+
+//Register
+router.get("/register", register);
+router.post("/register", httpPostRegister);
+
+//Business Contact Page
+router.get("/bcontact", httpGetBusinessCotnact);
+router.post("/addcontact", httpPostBusinessContact);
 module.exports = router;

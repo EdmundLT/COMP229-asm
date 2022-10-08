@@ -1,0 +1,86 @@
+<!-- Created On 1 October 2022
+COMP229 Assignment 1
+Student Name: LONG TANG
+SID: 301225866 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container mx-auto">
+    <header><%- include('../partials/header'); %></header>
+    <div
+      class="container rounded-lg mx-auto text-center p-8 content-center justify-around"
+    >
+      <p class="text-3xl pb-2">Business Contact List</p>
+      <p class="text-2xl pb-2 text-red-600"><%- caution -%></p>
+      <div class="grid grid-cols-5 gap-4">
+        <% docs.forEach(function(contact) { %>
+        <div class="pt-2"><%= contact.name %></div>
+        <div class="pt-2"><%= contact.number %></div>
+        <div class="pt-2"><%= contact.email %></div>
+        <button
+          action="/deletecontact"
+          type="submit"
+          class="text-black hover:bg-green-500 border-solid border-2 border-black py-2 px-2 rounded"
+        >
+          Update
+        </button>
+        <button
+          formaction="/deletecontact"
+          type="submit"
+          class="text-black hover:bg-green-500 border-solid border-2 border-black py-2 px-2 rounded"
+        >
+          Delete
+        </button>
+        <% }); %>
+      </div>
+      <hr>
+      <!-- Form -->
+      <div>
+        <form class="flex justify-between py-4" method="post">
+          <div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600"
+              placeholder="Contact Name"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="number"
+              name="number"
+              class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600"
+              placeholder="Contact Number"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600"
+              placeholder="Contact email Address"
+              required
+            />
+          </div>
+          <div>
+            <button
+              formaction="/addcontact"
+              type="submit"
+              class="text-black hover:bg-green-500 border-solid border-2 border-black py-2 px-4 rounded"
+            >
+              Add Contact
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
