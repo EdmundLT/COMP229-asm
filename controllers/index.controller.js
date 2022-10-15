@@ -1,15 +1,19 @@
 function home(req, res, next) {
-  res.render("pages/index");
+  const token = req.cookies.token;
+  res.render("pages/index", { token });
 }
 function about(req, res, next) {
-  res.render("pages/about", { title: "About Me" });
+  const token = req.cookies.token;
+  res.render("pages/about", { title: "About Me", token });
 }
 function contact(req, res, next) {
-  res.render("pages/contact");
+  const token = req.cookies.token;
+  res.render("pages/contact", { token });
 }
 
 function projects(req, res, next) {
-  res.render("pages/project");
+  const token = req.cookies.token;
+  res.render("pages/project", { token });
 }
 function contactForm(req, res, next) {
   const { name, email, message } = req.body;
@@ -18,7 +22,8 @@ function contactForm(req, res, next) {
   res.redirect("/");
 }
 function services(req, res, next) {
-  res.render("pages/services");
+  const token = req.cookies.token;
+  res.render("pages/services", { token });
 }
 module.exports = {
   home,

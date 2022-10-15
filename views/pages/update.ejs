@@ -12,43 +12,8 @@ SID: 301225866 -->
     <div
       class="container rounded-lg mx-auto text-center p-8 content-center justify-around"
     >
-      <p class="text-3xl pb-2">Business Contact List</p>
+      <p class="text-3xl pb-2"><%= docs.name %></p>
       <p class="text-2xl pb-2 text-red-600"><%- caution -%></p>
-
-      <!-- Contact Card -->
-      <div>
-        <% docs.forEach(function(contact) { %>
-        <form
-          action="/bcontact/delete/<%= contact.id %>"
-          method="post"
-          class="grid grid-cols-5 gap-4 py-4"
-        >
-          <div class="pt-2"><%= contact.name %></div>
-          <div class="pt-2"><%= contact.number %></div>
-          <div class="pt-2"><%= contact.email %></div>
-          <div class="cols-span-2">
-            <!-- Update Button -->
-            <button
-              formaction="/bcontact/update/<%= contact.id %>"
-              type="submit"
-              class="text-black hover:bg-green-500 border-solid border-2 border-black py-2 px-2 rounded"
-            >
-              Update
-            </button>
-          </div>
-          <!-- Delete Button -->
-          <div class="cols-span-2">
-            <button
-              type="submit"
-              class="text-black hover:bg-green-500 border-solid border-2 border-black py-2 px-2 rounded"
-            >
-              Delete
-            </button>
-          </div>
-        </form>
-        <% }); %>
-      </div>
-      <hr />
       <!-- Form -->
       <div>
         <form class="flex justify-between py-4" method="post">
@@ -59,6 +24,7 @@ SID: 301225866 -->
               name="name"
               class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600"
               placeholder="Contact Name"
+              value=<%= docs.name %>
               required
             />
           </div>
@@ -69,6 +35,7 @@ SID: 301225866 -->
               name="number"
               class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600"
               placeholder="Contact Number"
+              value=<%= docs.number %>
               required
             />
           </div>
@@ -79,19 +46,29 @@ SID: 301225866 -->
               name="email"
               class="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600"
               placeholder="Contact email Address"
+              value=<%= docs.email %>
               required
             />
           </div>
           <div>
             <button
-              formaction="/addcontact"
+              formaction="/editcontact"
               type="submit"
               class="text-black hover:bg-green-500 border-solid border-2 border-black py-2 px-4 rounded"
             >
-              Add Contact
+              Edit Contact
             </button>
           </div>
+          
         </form>
+        <div>
+            <button
+              type="button"
+              class="text-black hover:bg-green-500 border-solid border-2 border-black py-2 px-4 rounded"
+            >
+              <a href="/bcontact">Cancel Editing...</a>
+            </button>
+          </div>
       </div>
     </div>
     <footer><%- include('../partials/footer'); %></footer>
