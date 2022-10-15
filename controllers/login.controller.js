@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken");
 const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
 function login(req, res, next) {
-  res.render("pages/login", { caution: "" });
+  const token = req.cookies.token;
+  res.render("pages/login", { caution: "", token });
 }
 
 async function loginAuth(req, res, next) {
@@ -37,4 +38,6 @@ async function loginAuth(req, res, next) {
     }
   } catch (error) {}
 }
+
+
 module.exports = { login, loginAuth };

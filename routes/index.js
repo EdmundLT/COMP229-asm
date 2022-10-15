@@ -25,6 +25,9 @@ const {
 const {
   httpGetBusinessCotnact,
   httpPostBusinessContact,
+  httpDeleteBusnessContact,
+  httpUpdatePage,
+  httpEditBusinessContact,
 } = require("../controllers/bcontact.controller");
 
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -53,4 +56,7 @@ router.post("/register", httpPostRegister);
 //Business Contact Page
 router.get("/bcontact", httpGetBusinessCotnact);
 router.post("/addcontact", httpPostBusinessContact);
+router.post("/editcontact", httpEditBusinessContact);
+router.post("/bcontact/delete/:id", httpDeleteBusnessContact);
+router.post("/bcontact/update/:id", httpUpdatePage);
 module.exports = router;

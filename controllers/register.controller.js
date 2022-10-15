@@ -2,10 +2,11 @@ const userDb = require("../database/user.mongo");
 //Bcrypt
 const bcrypt = require("bcryptjs");
 function register(req, res, next) {
-  res.render("pages/register", { caution: "" });
+  const token = req.cookies.token;
+  res.render("pages/register", { caution: "", token });
 }
 async function httpPostRegister(req, res, next) {
-  const { username, password, confirm_password } = req.body;
+  const { username, email, password, confirm_password } = req.body;
   console.log({ username, password, confirm_password });
   if (password != confirm_password) {
     res.render("pages/register", {
@@ -25,6 +26,7 @@ async function httpPostRegister(req, res, next) {
       } else {
         const registeredUser = {
           username,
+          email,
           password: hashed,
         };
         await userDb.create(registeredUser);

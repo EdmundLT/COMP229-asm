@@ -1,5 +1,18 @@
 //Import Database Schema
 const contactDb = require("../database/contact.mongo");
+const DEFAULT_BCONTACT_ID = 1;
+
+//Find the latest Business Contact Id
+async function getLatestBConactId() {
+  const latestContact = await contactDb.findOne().sort("-id");
+  if (!latestContact) {
+    return DEFAULT_BCONTACT_ID;
+  }
+
+  return latestContact.id;
+}
+
+//HTTP GET All Business Contact
 async function httpGetBusinessCotnact(req, res, next) {
   const token = req.cookies.token;
   if (!token) {
@@ -13,27 +26,62 @@ async function httpGetBusinessCotnact(req, res, next) {
     }
   );
   res.render("pages/bcontact.ejs", {
+    token,
     docs: contactDocs,
     username: token.username,
     caution: "",
   });
 }
-
+//HTTP POST Create Business Contact
 async function httpPostBusinessContact(req, res, next) {
   const { name, number, email } = req.body;
-  const addingContact = { name, number, email };
+  const id = (await getLatestBConactId()) + 1;
+  const addingContact = { id, name, number, email };
   const findingResult = await contactDb.findOne({ email });
   console.log({ findingResult });
   if (findingResult != null) {
-    res.render("pages/bcontact", { caution: "Contact Email Existed." });
+    res.redirect("/bcontact");
   } else {
     await contactDb.create(addingContact);
     console.log(`Contact ${name} added to the database.`);
     res.redirect("/bcontact");
   }
 }
+async function httpDeleteBusnessContact(req, res, next) {
+  const id = req.params.id;
+  await contactDb.findOneAndDelete({ id });
+  console.log(`Contact #${id} Deleted`);
+  res.redirect("/bcontact");
+}
+//Direct to Update Page
+async function httpUpdatePage(req, res, next) {
+  const id = req.params.id;
+  const token = req.cookies.token;
+  const updateDoc = await contactDb.findOne({ id });
+  res.render("pages/update.ejs", {
+    token,
+    docs: updateDoc,
+    caution: "",
+  });
+}
 
+//Editing the Contact
+async function httpEditBusinessContact(req, res, next) {
+  const { name, number, email } = req.body;
+  await contactDb.findOneAndUpdate(
+    { email },
+    {
+      name,
+      number,
+      email,
+    }
+  );
+  res.redirect("/bcontact");
+}
 module.exports = {
   httpGetBusinessCotnact,
   httpPostBusinessContact,
+  httpDeleteBusnessContact,
+  httpUpdatePage,
+  httpEditBusinessContact,
 };
