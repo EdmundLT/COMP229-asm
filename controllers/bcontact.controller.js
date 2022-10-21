@@ -40,18 +40,18 @@ async function httpPostBusinessContact(req, res, next) {
   const findingResult = await contactDb.findOne({ email });
   console.log({ findingResult });
   if (findingResult != null) {
-    res.redirect("/bcontact");
+    res.redirect("/bcontact/home");
   } else {
     await contactDb.create(addingContact);
     console.log(`Contact ${name} added to the database.`);
-    res.redirect("/bcontact");
+    res.redirect("/bcontact/home");
   }
 }
 async function httpDeleteBusnessContact(req, res, next) {
   const id = req.params.id;
   await contactDb.findOneAndDelete({ id });
   console.log(`Contact #${id} Deleted`);
-  res.redirect("/bcontact");
+  res.redirect("/bcontact/home");
 }
 //Direct to Update Page
 async function httpUpdatePage(req, res, next) {
@@ -68,15 +68,9 @@ async function httpUpdatePage(req, res, next) {
 //Editing the Contact
 async function httpEditBusinessContact(req, res, next) {
   const { name, number, email } = req.body;
-  await contactDb.findOneAndUpdate(
-    { email },
-    {
-      name,
-      number,
-      email,
-    }
-  );
-  res.redirect("/bcontact");
+  const user = await contactDb.findOne({ email });
+  await user.updateOne({ name, number, email });
+  res.redirect("/bcontact/home");
 }
 module.exports = {
   httpGetBusinessCotnact,
