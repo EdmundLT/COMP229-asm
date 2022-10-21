@@ -17,7 +17,7 @@ const {
   services,
 } = require("../controllers/index.controller");
 //Login Controller
-const { login, loginAuth } = require("../controllers/login.controller");
+const { login, loginAuth, logout } = require("../controllers/login.controller");
 const {
   register,
   httpPostRegister,
@@ -46,6 +46,7 @@ router.get("/services", services);
 
 //Login
 router.get("/login", login);
+router.get("/logout", logout);
 //Authenticate Login Information
 router.post("/auth", loginAuth);
 

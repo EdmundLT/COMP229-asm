@@ -1,6 +1,10 @@
 const userDb = require("../database/user.mongo");
 //Bcrypt
 const bcrypt = require("bcryptjs");
+//JWT
+const jwt = require("jsonwebtoken");
+const jwtSecretKey = process.env.JWT_SECRET_KEY;
+
 function register(req, res, next) {
   const token = req.cookies.token;
   res.render("pages/register", { caution: "", token });
@@ -19,11 +23,16 @@ async function httpPostRegister(req, res, next) {
       console.log({ hashed });
       const user = await userDb.findOne({ username: username });
       console.log(user);
+
       if (user != null) {
         res.render("pages/register", {
-          caution: "username existed, try login",
+          caution: "username existed, try again",
         });
       } else {
+        const token = jwt.sign({ username }, jwtSecretKey, {
+          algorithm: "HS256",
+          expiresIn: 3000,
+        });
         const registeredUser = {
           username,
           email,
@@ -31,7 +40,8 @@ async function httpPostRegister(req, res, next) {
         };
         await userDb.create(registeredUser);
         console.log(`user ${username} added into the database`);
-        res.redirect("/");
+        res.cookie("token", token, { maxAge: 3000 * 1000 });
+        res.redirect("/bcontact");
       }
     } catch (error) {
       console.log(error);
