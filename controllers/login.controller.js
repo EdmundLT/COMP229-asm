@@ -7,11 +7,16 @@ const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
 function login(req, res, next) {
   const token = req.cookies.token;
+  if (token) {
+    res.redirect("/");
+    return;
+  }
   res.render("pages/login", { caution: "", token });
 }
 
 async function loginAuth(req, res, next) {
   const { username, password } = req.body;
+  const token = req.cookies.token;
   const user = await userDb.findOne({ username });
   try {
     if (user != null) {
@@ -25,15 +30,17 @@ async function loginAuth(req, res, next) {
         });
         console.log({ token });
         res.cookie("token", token, { maxAge: 3000 * 1000 });
-        res.redirect("/bcontact");
+        res.redirect("/bcontact/home");
       } else {
         res.render("pages/login", {
           caution: "username or password incorrect, please try again.",
+          token,
         });
       }
     } else {
       res.render("pages/login", {
         caution: "username or password incorrect, please try again.",
+        token,
       });
     }
   } catch (error) {}
@@ -43,9 +50,9 @@ async function logout(req, res) {
   try {
     res.clearCookie("token");
   } catch (error) {
-    res.status(500).send(error)
+    res.status(500).send(error);
   }
-  res.redirect('/')
+  res.redirect("/");
 }
 
 module.exports = { login, loginAuth, logout };
