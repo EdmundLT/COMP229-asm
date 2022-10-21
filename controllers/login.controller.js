@@ -39,5 +39,13 @@ async function loginAuth(req, res, next) {
   } catch (error) {}
 }
 
+async function logout(req, res) {
+  try {
+    res.clearCookie("token");
+  } catch (error) {
+    res.status(500).send(error)
+  }
+  res.redirect('/')
+}
 
-module.exports = { login, loginAuth };
+module.exports = { login, loginAuth, logout };
