@@ -1,7 +1,6 @@
 //Import Database Schema
 const contactDb = require("../database/contact.mongo");
 const DEFAULT_BCONTACT_ID = 1;
-
 //Find the latest Business Contact Id
 async function getLatestBConactId() {
   const latestContact = await contactDb.findOne().sort("-id");
@@ -14,10 +13,7 @@ async function getLatestBConactId() {
 
 //HTTP GET All Business Contact
 async function httpGetBusinessCotnact(req, res, next) {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(401).redirect("/login");
-  }
+  const user = req.user ? req.user : null;
   const contactDocs = await contactDb.find(
     {},
     {
@@ -26,10 +22,9 @@ async function httpGetBusinessCotnact(req, res, next) {
     }
   );
   res.render("pages/bcontact.ejs", {
-    token,
     docs: contactDocs,
-    username: token.username,
     caution: "",
+    user,
   });
 }
 //HTTP POST Create Business Contact
@@ -38,7 +33,6 @@ async function httpPostBusinessContact(req, res, next) {
   const id = (await getLatestBConactId()) + 1;
   const addingContact = { id, name, number, email };
   const findingResult = await contactDb.findOne({ email });
-  console.log({ findingResult });
   if (findingResult != null) {
     res.redirect("/bcontact/home");
   } else {
