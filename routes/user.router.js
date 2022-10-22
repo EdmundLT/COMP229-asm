@@ -1,22 +1,42 @@
-require("dotenv").config();
+// Created On 21 October 2022
+// COMP229 Assignment 2
+// Student Name: LONG TANG
+// SID: 301225866
 const express = require("express");
-const userRouter = express.Router();
-
-//Login Controller
-const { login, loginAuth, logout } = require("../controllers/login.controller");
+const passport = require("passport");
+const UserRouter = express.Router();
+const initializePassport = require("../passport/passport.config");
 const {
-  register,
+  getUserByEmail,
+  getUserById,
+  httpGetHomePage,
   httpPostRegister,
-} = require("../controllers/register.controller");
+  httpLogout,
+  checkNotAuthenticated,
+  checkAuthenticated,
+} = require("../controllers/user.controller");
+initializePassport(passport, getUserByEmail, getUserById);
 
-//Login
-userRouter.get("/login", login);
-userRouter.get("/logout", logout);
-//Authenticate Login Information
-userRouter.post("/auth", loginAuth);
+UserRouter.get("/login", checkNotAuthenticated, (req, res) => {
+  res.render("pages/login", { caution: "" });
+});
 
-//Register
-userRouter.get("/register", register);
-userRouter.post("/register", httpPostRegister);
+UserRouter.post(
+  "/login",
+  checkNotAuthenticated,
+  passport.authenticate("local", {
+    successRedirect: "/bcontact/home",
+    failureRedirect: "/user/login",
+    failureFlash: true,
+  })
+);
 
-module.exports = userRouter;
+UserRouter.get("/register", checkNotAuthenticated, (req, res) => {
+  res.render("pages/register.ejs", { caution: "" });
+});
+
+UserRouter.post("/register", checkNotAuthenticated, httpPostRegister);
+
+UserRouter.post("/logout", httpLogout);
+
+module.exports = UserRouter;

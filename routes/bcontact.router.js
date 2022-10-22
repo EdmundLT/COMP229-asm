@@ -1,3 +1,7 @@
+// Created On 21 October 2022
+// COMP229 Assignment 2
+// Student Name: LONG TANG
+// SID: 301225866
 require("dotenv").config();
 const express = require("express");
 const businessContactRouter = express.Router();
@@ -8,10 +12,11 @@ const {
   httpUpdatePage,
   httpEditBusinessContact,
 } = require("../controllers/bcontact.controller");
+const { checkAuthenticated } = require("../controllers/user.controller");
 
 //Business Contact Page
 
-businessContactRouter.get("/home", httpGetBusinessCotnact);
+businessContactRouter.get("/home", checkAuthenticated, httpGetBusinessCotnact);
 businessContactRouter.post("/addcontact", httpPostBusinessContact);
 businessContactRouter.post("/editcontact", httpEditBusinessContact);
 businessContactRouter.post("/delete/:id", httpDeleteBusnessContact);

@@ -1,19 +1,20 @@
 function home(req, res, next) {
-  const token = req.cookies.token;
-  res.render("pages/index", { token });
+  user = req.user ? req.user : null;
+  res.render("pages/index", { user });
 }
 function about(req, res, next) {
-  const token = req.cookies.token;
-  res.render("pages/about", { title: "About Me", token });
+  user = req.user ? req.user : null;
+  res.render("pages/about", { title: "About Me", user });
 }
 function contact(req, res, next) {
-  const token = req.cookies.token;
-  res.render("pages/contact", { token });
+  user = req.user ? req.user : null;
+  res.render("pages/contact", { user });
 }
 
 function projects(req, res, next) {
-  const token = req.cookies.token;
-  res.render("pages/project", { token });
+  user = req.user ? req.user : null;
+  console.log(user);
+  res.render("pages/project", { user });
 }
 function contactForm(req, res, next) {
   const { name, email, message } = req.body;
@@ -22,8 +23,8 @@ function contactForm(req, res, next) {
   res.redirect("/");
 }
 function services(req, res, next) {
-  const token = req.cookies.token;
-  res.render("pages/services", { token });
+  user = req.user ? req.user : null;
+  res.render("pages/services", { user });
 }
 module.exports = {
   home,
